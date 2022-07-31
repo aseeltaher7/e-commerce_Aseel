@@ -42,21 +42,28 @@ namespace asp.netloginpage
                 {
                     if (Convert.ToString(dst.Tables[0].Rows[0]["Type"] )== "admin")
                     {
+                        Session["username"] = txtUserName.Text.Trim();
                         Session["type"] = "admin";
+                        Response.Redirect("Dashboard.aspx");
                     }
                     else
                     {
+                        Session["username"] = txtUserName.Text.Trim();
                         Session["type"] = "customer";
+                        Response.Redirect("Dashboard_customer.aspx");
+
                     }
                 }
 
 
                 if (dst.Tables[0].Rows.Count > 0)
                 {
-                    Session["username"] = txtUserName.Text.Trim();
+                    
                     //Session["type"] = "admin";
 
                     Response.Redirect("Dashboard.aspx");
+
+                    
                 }
                 else { lblErrorMessage.Visible = true; }
 
