@@ -16,29 +16,70 @@
         <asp:Label ID="userTypeLabel" runat="server" Text="Label"></asp:Label>
         <br />
         list of users<br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+        <br />
+        <asp:GridView ID="GridView3" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource1">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
+                <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                 <asp:BoundField DataField="PhoneNumber" HeaderText="PhoneNumber" SortExpression="PhoneNumber" />
                 <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName" />
+                <asp:BoundField DataField="Password" HeaderText="Password" SortExpression="Password" />
                 <asp:BoundField DataField="Type" HeaderText="Type" SortExpression="Type" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Aseel_ExamConnectionString %>" SelectCommand="SELECT [Name], [PhoneNumber], [UserName], [Type] FROM [ApplicationUsers]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Aseel_ExamConnectionString %>" DeleteCommand="DELETE FROM [ApplicationUsers] WHERE [ID] = @ID" InsertCommand="INSERT INTO [ApplicationUsers] ([ID], [Name], [PhoneNumber], [UserName], [Password], [Type]) VALUES (@ID, @Name, @PhoneNumber, @UserName, @Password, @Type)" SelectCommand="SELECT [ID], [Name], [PhoneNumber], [UserName], [Password], [Type] FROM [ApplicationUsers]" UpdateCommand="UPDATE [ApplicationUsers] SET [Name] = @Name, [PhoneNumber] = @PhoneNumber, [UserName] = @UserName, [Password] = @Password, [Type] = @Type WHERE [ID] = @ID">
+            <DeleteParameters>
+                <asp:Parameter Name="ID" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="ID" Type="Int32" />
+                <asp:Parameter Name="Name" Type="String" />
+                <asp:Parameter Name="PhoneNumber" Type="Int64" />
+                <asp:Parameter Name="UserName" Type="String" />
+                <asp:Parameter Name="Password" Type="String" />
+                <asp:Parameter Name="Type" Type="String" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Name" Type="String" />
+                <asp:Parameter Name="PhoneNumber" Type="Int64" />
+                <asp:Parameter Name="UserName" Type="String" />
+                <asp:Parameter Name="Password" Type="String" />
+                <asp:Parameter Name="Type" Type="String" />
+                <asp:Parameter Name="ID" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
+        <br />
+        <br />
         <br />
         list of products&nbsp;&nbsp;&nbsp;
         <br />
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+        <asp:GridView ID="GridView4" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="ID" DataSourceID="SqlDataSource2">
             <Columns>
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
                 <asp:BoundField DataField="CreatedBy" HeaderText="CreatedBy" SortExpression="CreatedBy" />
                 <asp:BoundField DataField="CreatedAt" HeaderText="CreatedAt" SortExpression="CreatedAt" />
                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
-                <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" />
-                <asp:BoundField DataField="DiscountPercentage" HeaderText="DiscountPercentage" SortExpression="DiscountPercentage" />
+                <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Aseel_ExamConnectionString %>" SelectCommand="SELECT [CreatedBy], [CreatedAt], [Name], [Code], [Price], [DiscountPercentage] FROM [Products]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Aseel_ExamConnectionString %>" DeleteCommand="DELETE FROM [ProductCategories] WHERE [ID] = @ID" InsertCommand="INSERT INTO [ProductCategories] ([CreatedBy], [CreatedAt], [Name], [ID]) VALUES (@CreatedBy, @CreatedAt, @Name, @ID)" SelectCommand="SELECT [CreatedBy], [CreatedAt], [Name], [ID] FROM [ProductCategories]" UpdateCommand="UPDATE [ProductCategories] SET [CreatedBy] = @CreatedBy, [CreatedAt] = @CreatedAt, [Name] = @Name WHERE [ID] = @ID">
+            <DeleteParameters>
+                <asp:Parameter Name="ID" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="CreatedBy" Type="String" />
+                <asp:Parameter Name="CreatedAt" Type="String" />
+                <asp:Parameter Name="Name" Type="String" />
+                <asp:Parameter Name="ID" Type="Int32" />
+            </InsertParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="CreatedBy" Type="String" />
+                <asp:Parameter Name="CreatedAt" Type="String" />
+                <asp:Parameter Name="Name" Type="String" />
+                <asp:Parameter Name="ID" Type="Int32" />
+            </UpdateParameters>
+        </asp:SqlDataSource>
         <br />
         <br />
         <br />
