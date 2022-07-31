@@ -35,7 +35,6 @@ namespace asp.netloginpage
           
                 String query = "INSERT INTO ApplicationUsers(Name,PhoneNumber,UserName,Password,Type) values (@Name,@PhoneNumber,@UserName,@Password,@Type)";
                 SqlCommand sqlCmd = new SqlCommand(query, sqlCon);
-                sqlCmd.Parameters.AddWithValue("@ID", idbox.Text);
 
                 sqlCmd.Parameters.AddWithValue("@Name", namebox.Text);
                 sqlCmd.Parameters.AddWithValue("@PhoneNumber", phonebox.Text);
@@ -47,7 +46,13 @@ namespace asp.netloginpage
                 sqlCmd.Parameters.AddWithValue("@Type", typebox.Text);
 
                 sqlCmd.ExecuteNonQuery();
+                Response.Redirect("Dashboard.aspx");
             }
+        }
+
+        protected void GridView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
