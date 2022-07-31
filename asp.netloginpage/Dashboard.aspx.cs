@@ -14,6 +14,10 @@ namespace asp.netloginpage
             if (Session["username"] == null)
                 Response.Redirect("login.aspx");
             lblUserDetails.Text = "Username : " + Session["username"];
+            userTypeLabel.Text = "" + Session["type"];
+
+
+
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)

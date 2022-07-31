@@ -13,6 +13,7 @@
         &nbsp;<asp:Button ID="btnLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" />
         <br />
         <br />
+        <asp:Label ID="userTypeLabel" runat="server" Text="Label"></asp:Label>
         <br />
         list of users<br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
